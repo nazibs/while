@@ -139,9 +139,10 @@ class Lexer{
     			return token;
     		}
     		if(this.currentChar == ')') {
-    			Token token = new Token(While.RBRAC, ""+this.currentChar); 
+    			Token token = new Token(While.RBRAC, ""+this.currentChar);
     			goToNextCharacter();
-    			return token;
+//    			return token;
+    			continue;
     		}
     		if(this.currentChar == '{') {
     			Token token = new Token(While.LCBRAC, ""+this.currentChar); 
@@ -377,7 +378,6 @@ class Parser{
 		else
 			throw new ParsingException("Error in Parsing");
 		
-//		While.print("Here near end of eating method");
 		While.print("Here near end of eating method");
 //		eat(this.currentToken.type);
 		While.print("Returning from evalNum with node: " + node.token.type);
@@ -685,7 +685,7 @@ public class While{
     static String LESS="LESS", GREATER="GREATER", EQUAL="EQUAL", AND="AND", OR="OR", END="END", ASSIGN="ASSIGN", NOT="NOT";
     static String IF="IF", THEN="THEN", ELSE="ELSE", SKIP="SKIP", WHILE="WHILE", DO="DO", TRUE="TRUE", FALSE="FALSE", VARIABLE="VAR";
     
-    static Boolean WannaPrint = true;
+    static Boolean WannaPrint = false;
     
     public static void print(String message) {
     	if(WannaPrint)
